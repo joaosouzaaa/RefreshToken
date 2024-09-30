@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefreshToken.API", "src\RefreshToken.API\RefreshToken.API.csproj", "{BF6AD6DF-2421-48C2-98C3-72F99647EEB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6CC02DF4-9EE0-4D04-80DD-AC407E667D1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{984CAC4E-FE16-4D1F-B776-509AF9F8453B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF6AD6DF-2421-48C2-98C3-72F99647EEB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF6AD6DF-2421-48C2-98C3-72F99647EEB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF6AD6DF-2421-48C2-98C3-72F99647EEB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF6AD6DF-2421-48C2-98C3-72F99647EEB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{984CAC4E-FE16-4D1F-B776-509AF9F8453B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{984CAC4E-FE16-4D1F-B776-509AF9F8453B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{984CAC4E-FE16-4D1F-B776-509AF9F8453B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{984CAC4E-FE16-4D1F-B776-509AF9F8453B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{984CAC4E-FE16-4D1F-B776-509AF9F8453B} = {6CC02DF4-9EE0-4D04-80DD-AC407E667D1C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {052BF1FB-B6F9-4320-846D-4B5130EC2292}
+	EndGlobalSection
+EndGlobal
