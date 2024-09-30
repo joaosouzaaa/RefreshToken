@@ -22,6 +22,14 @@ internal sealed class UserBuilder
             PasswordHash = _password
         };
 
+    public CreateUserRequest CreateRequestBuild() =>
+        new(_userName,
+            _password);
+
+    public GetUserByIdResponse GetByIdResponseBuild() =>
+        new(_id,
+            _userName);
+
     public LoginRequest LoginRequestBuild() =>
         new(_userName,
             _password);

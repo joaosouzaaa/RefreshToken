@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.JsonWebTokens;
 using RefreshToken.API.Arguments;
 using RefreshToken.API.Data.DatabaseContexts;
 using RefreshToken.API.Entities;
@@ -12,7 +14,8 @@ public sealed class UserRepository(
     UserManager<User> userManager,
     SignInManager<User> signInManager,
     ApplicationDbContext dbContext)
-    : IUserRepository
+    : IUserRepository,
+    IDisposable
 {
     public Task CreateAsync(User user) =>
         userManager.CreateAsync(user, user.PasswordHash!);
@@ -27,6 +30,17 @@ public sealed class UserRepository(
         return signInResult.Succeeded;
     }
 
+    public Task SetAuthenticationTokenAsync(User user, string token) =>
+        userManager.SetAuthenticationTokenAsync(user, JwtBearerDefaults.AuthenticationScheme, JwtConstants.TokenType, token);
+
     public Task<bool> UserNameExistsAsync(string userName, CancellationToken cancellationToken) =>
         dbContext.Users.AnyAsync(u => u.UserName == userName, cancellationToken);
+
+    public void Dispose()
+    {
+        dbContext.Dispose();
+        userManager.Dispose();
+
+        GC.SuppressFinalize(this);
+    }
 }
