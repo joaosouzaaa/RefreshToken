@@ -32,6 +32,31 @@ public sealed class JwtService(IOptions<TokenOptions> tokenOptions) : IJwtServic
         return tokenHandler.WriteToken(token);
     }
 
+    public async Task<string?> GetNameIdentifierFromTokenAsync(string token)
+    {
+        var tokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateLifetime = false,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_token.Key)),
+            ValidateIssuer = true,
+            ValidIssuer = _token.Issuer,
+            ValidateAudience = true,
+            ValidAudience = _token.Audience
+        };
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+
+        var tokenValidationResult = await tokenHandler.ValidateTokenAsync(token, tokenValidationParameters);
+
+        if (!tokenValidationResult.IsValid)
+        {
+            return null;
+        }
+
+        return tokenValidationResult.Claims.FirstOrDefault(c => c.Key == ClaimTypes.NameIdentifier).Value.ToString();
+    }
+
     private static List<Claim> GetUserInitialClaims(User user) =>
         [
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),

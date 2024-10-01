@@ -34,4 +34,12 @@ public sealed class UserController(IUserService userService) : ControllerBase
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public Task<BearerResponse?> LoginAsync([FromBody] LoginRequest loginRequest, CancellationToken cancellationToken) =>
         userService.LoginAsync(loginRequest, cancellationToken);
+
+    [Authorize]
+    [HttpPost("sign-out")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public Task SignOutAsync(CancellationToken cancellationToken) =>
+        userService.SignOutAsync(User.Identity!.GetUserId()!, cancellationToken);
 }

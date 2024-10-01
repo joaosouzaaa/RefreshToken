@@ -25,7 +25,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\src\RefreshToken.API\RefreshToken.API.csproj" />
+		<ProjectReference Include="..\..\src\RefreshToken.API\RefreshToken.API.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

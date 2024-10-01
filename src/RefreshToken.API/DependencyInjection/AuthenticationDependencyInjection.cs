@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using RefreshToken.API.Constants;
+using RefreshToken.API.Events;
 using System.Text;
 
 namespace RefreshToken.API.DependencyInjection;
@@ -34,8 +35,11 @@ internal static class AuthenticationDependencyInjection
                 ValidAudience = token.Audience,
                 ClockSkew = TimeSpan.Zero
             };
+            options.EventsType = typeof(TokenRevokedBearerEvents);
         })
        .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
        .AddCookie(IdentityConstants.ApplicationScheme);
+
+        services.AddScoped<TokenRevokedBearerEvents>();
     }
 }

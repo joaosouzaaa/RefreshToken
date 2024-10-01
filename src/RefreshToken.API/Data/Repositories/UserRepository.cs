@@ -20,6 +20,9 @@ public sealed class UserRepository(
     public Task CreateAsync(User user) =>
         userManager.CreateAsync(user, user.PasswordHash!);
 
+    public Task<string?> GetAuthenticationTokenAsync(User user) =>
+        userManager.GetAuthenticationTokenAsync(user, JwtBearerDefaults.AuthenticationScheme, JwtConstants.TokenType);
+
     public Task<User?> GetByPredicateAsync(Expression<Func<User, bool>> predicate, CancellationToken cancellationToken) =>
         dbContext.Users.FirstOrDefaultAsync(predicate, cancellationToken);
 
@@ -29,6 +32,9 @@ public sealed class UserRepository(
 
         return signInResult.Succeeded;
     }
+
+    public Task RemoveAuthenticationTokenAsync(User user) =>
+        userManager.RemoveAuthenticationTokenAsync(user, JwtBearerDefaults.AuthenticationScheme, JwtConstants.TokenType);
 
     public Task SetAuthenticationTokenAsync(User user, string token) =>
         userManager.SetAuthenticationTokenAsync(user, JwtBearerDefaults.AuthenticationScheme, JwtConstants.TokenType, token);

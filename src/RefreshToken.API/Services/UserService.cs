@@ -72,6 +72,20 @@ public sealed class UserService(
                    refreshToken.ExpiryDate);
     }
 
+    public async Task SignOutAsync(string userId, CancellationToken cancellationToken)
+    {
+        var user = await userRepository.GetByPredicateAsync(u => u.Id == userId, cancellationToken);
+
+        if (user is null)
+        {
+            notificationHandler.AddNotification("Not Found", "User not found");
+
+            return;
+        }
+
+        await userRepository.RemoveAuthenticationTokenAsync(user);
+    }
+
     private async Task<bool> IsValidAsync(User user, CancellationToken cancellationToken)
     {
         var validationResult = await userValidator.ValidateAsync(user, cancellationToken);
