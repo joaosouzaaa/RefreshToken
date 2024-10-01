@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "tests\UnitTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RefreshTokenAuthentication.API", "src\RefreshTokenAuthentication.API\RefreshTokenAuthentication.API.csproj", "{4F60A3ED-8E8E-4A74-9558-826FE9727439}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C8EA17F9-8092-45FF-BFB3-418D7E18C959}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{4F60A3ED-8E8E-4A74-9558-826FE9727439}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F60A3ED-8E8E-4A74-9558-826FE9727439}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F60A3ED-8E8E-4A74-9558-826FE9727439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8EA17F9-8092-45FF-BFB3-418D7E18C959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8EA17F9-8092-45FF-BFB3-418D7E18C959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8EA17F9-8092-45FF-BFB3-418D7E18C959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8EA17F9-8092-45FF-BFB3-418D7E18C959}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

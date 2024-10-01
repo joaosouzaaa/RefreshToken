@@ -1,0 +1,17 @@
+services:
+  sqlrefreshtoken:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql-container-flowershop
+    environment:
+      - SA_PASSWORD=RefreshToken123
+      - ACCEPT_EULA=Y
+
+  refreshtokenauthentication.api:
+    image: ${DOCKER_REGISTRY-}refreshtokenauthenticationapi
+    build:
+      context: .
+      dockerfile: src/RefreshTokenAuthentication.API/Dockerfile
+    environment:
+      - DOCKER_ENVIROMENT=DockerDevelopment
+    depends_on:
+      - sqlrefreshtoken

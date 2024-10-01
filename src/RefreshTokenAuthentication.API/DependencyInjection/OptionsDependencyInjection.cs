@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
-using RefreshTokenAuthentication.API.Constants;
+﻿using RefreshTokenAuthentication.API.Constants;
+using RefreshTokenAuthentication.API.Options;
 
 namespace RefreshTokenAuthentication.API.DependencyInjection;
 
