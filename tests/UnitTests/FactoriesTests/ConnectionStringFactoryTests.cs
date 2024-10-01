@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
-using RefreshToken.API.Factories;
+using RefreshTokenAuthentication.API.Factories;
 
 namespace UnitTests.FactoriesTests;
 

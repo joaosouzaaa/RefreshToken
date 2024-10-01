@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.Options;
 using Moq;
-using RefreshToken.API.DataTransferObjects.RefreshToken;
-using RefreshToken.API.Entities;
-using RefreshToken.API.Interfaces.Repositories;
-using RefreshToken.API.Interfaces.Services;
-using RefreshToken.API.Interfaces.Settings;
-using RefreshToken.API.Options;
-using RefreshToken.API.Services;
+using RefreshTokenAuthentication.API.DataTransferObjects.RefreshToken;
+using RefreshTokenAuthentication.API.Entities;
+using RefreshTokenAuthentication.API.Interfaces.Repositories;
+using RefreshTokenAuthentication.API.Interfaces.Services;
+using RefreshTokenAuthentication.API.Interfaces.Settings;
+using RefreshTokenAuthentication.API.Options;
+using RefreshTokenAuthentication.API.Services;
 using System.Linq.Expressions;
 using UnitTests.TestBuilders;
 
@@ -50,21 +50,21 @@ public sealed class RefreshTokenServiceTests
         const string userId = "oaksdoak";
 
         _refreshTokenRepositoryMock.Setup(r => r.GetByPredicateAsync(
-            It.IsAny<Expression<Func<ApplicationRefreshToken, bool>>>(),
+            It.IsAny<Expression<Func<RefreshToken, bool>>>(),
             It.IsAny<CancellationToken>()))
-            .Returns(Task.FromResult<ApplicationRefreshToken?>(null));
+            .Returns(Task.FromResult<RefreshToken?>(null));
 
         // A
         var refreshTokenValueResult = await _refreshTokenService.AddOrReplaceRefreshTokenAsync(userId, default);
 
         // A
         _refreshTokenRepositoryMock.Verify(r => r.AddAsync(
-            It.IsAny<ApplicationRefreshToken>(),
+            It.IsAny<RefreshToken>(),
             It.IsAny<CancellationToken>()),
             Times.Once());
 
         _refreshTokenRepositoryMock.Verify(r => r.UpdateAsync(
-            It.IsAny<ApplicationRefreshToken>(),
+            It.IsAny<RefreshToken>(),
             It.IsAny<CancellationToken>()),
             Times.Never());
     }
@@ -77,7 +77,7 @@ public sealed class RefreshTokenServiceTests
 
         var refreshToken = RefreshTokenBuilder.NewObject().DomainBuild();
         _refreshTokenRepositoryMock.Setup(r => r.GetByPredicateAsync(
-            It.IsAny<Expression<Func<ApplicationRefreshToken, bool>>>(),
+            It.IsAny<Expression<Func<RefreshToken, bool>>>(),
             It.IsAny<CancellationToken>()))
             .ReturnsAsync(refreshToken);
 
@@ -86,12 +86,12 @@ public sealed class RefreshTokenServiceTests
 
         // A
         _refreshTokenRepositoryMock.Verify(r => r.AddAsync(
-            It.IsAny<ApplicationRefreshToken>(),
+            It.IsAny<RefreshToken>(),
             It.IsAny<CancellationToken>()),
             Times.Never());
 
         _refreshTokenRepositoryMock.Verify(r => r.UpdateAsync(
-            It.IsAny<ApplicationRefreshToken>(),
+            It.IsAny<RefreshToken>(),
             It.IsAny<CancellationToken>()),
             Times.Once());
     }
@@ -122,7 +122,7 @@ public sealed class RefreshTokenServiceTests
 
         var refreshToken = RefreshTokenBuilder.NewObject().WithExpiryDate(DateTime.UtcNow.AddMinutes(3)).DomainBuild();
         _refreshTokenRepositoryMock.SetupSequence(r => r.GetByPredicateAsync(
-            It.IsAny<Expression<Func<ApplicationRefreshToken, bool>>>(),
+            It.IsAny<Expression<Func<RefreshToken, bool>>>(),
             It.IsAny<CancellationToken>()))
             .ReturnsAsync(refreshToken)
             .ReturnsAsync(refreshToken);
@@ -156,7 +156,7 @@ public sealed class RefreshTokenServiceTests
             Times.Once());
 
         _refreshTokenRepositoryMock.Verify(r => r.GetByPredicateAsync(
-            It.IsAny<Expression<Func<ApplicationRefreshToken, bool>>>(),
+            It.IsAny<Expression<Func<RefreshToken, bool>>>(),
             It.IsAny<CancellationToken>()),
             Times.Exactly(expectedGetByPredicateCalls));
 
@@ -165,7 +165,7 @@ public sealed class RefreshTokenServiceTests
             Times.Once());
 
         _refreshTokenRepositoryMock.Verify(r => r.UpdateAsync(
-            It.IsAny<ApplicationRefreshToken>(),
+            It.IsAny<RefreshToken>(),
             It.IsAny<CancellationToken>()),
             Times.Once());
 
@@ -213,7 +213,7 @@ public sealed class RefreshTokenServiceTests
             Times.Never());
 
         _refreshTokenRepositoryMock.Verify(r => r.GetByPredicateAsync(
-            It.IsAny<Expression<Func<ApplicationRefreshToken, bool>>>(),
+            It.IsAny<Expression<Func<RefreshToken, bool>>>(),
             It.IsAny<CancellationToken>()),
             Times.Never());
 
@@ -222,12 +222,12 @@ public sealed class RefreshTokenServiceTests
             Times.Never());
 
         _refreshTokenRepositoryMock.Verify(r => r.AddAsync(
-            It.IsAny<ApplicationRefreshToken>(),
+            It.IsAny<RefreshToken>(),
             It.IsAny<CancellationToken>()),
             Times.Never());
 
         _refreshTokenRepositoryMock.Verify(r => r.UpdateAsync(
-            It.IsAny<ApplicationRefreshToken>(),
+            It.IsAny<RefreshToken>(),
             It.IsAny<CancellationToken>()),
             Times.Never());
 
@@ -280,7 +280,7 @@ public sealed class RefreshTokenServiceTests
             Times.Never());
 
         _refreshTokenRepositoryMock.Verify(r => r.GetByPredicateAsync(
-            It.IsAny<Expression<Func<ApplicationRefreshToken, bool>>>(),
+            It.IsAny<Expression<Func<RefreshToken, bool>>>(),
             It.IsAny<CancellationToken>()),
             Times.Never());
 
@@ -289,12 +289,12 @@ public sealed class RefreshTokenServiceTests
             Times.Never());
 
         _refreshTokenRepositoryMock.Verify(r => r.AddAsync(
-            It.IsAny<ApplicationRefreshToken>(),
+            It.IsAny<RefreshToken>(),
             It.IsAny<CancellationToken>()),
             Times.Never());
 
         _refreshTokenRepositoryMock.Verify(r => r.UpdateAsync(
-            It.IsAny<ApplicationRefreshToken>(),
+            It.IsAny<RefreshToken>(),
             It.IsAny<CancellationToken>()),
             Times.Never());
 
@@ -354,7 +354,7 @@ public sealed class RefreshTokenServiceTests
             Times.Once());
 
         _refreshTokenRepositoryMock.Verify(r => r.GetByPredicateAsync(
-            It.IsAny<Expression<Func<ApplicationRefreshToken, bool>>>(),
+            It.IsAny<Expression<Func<RefreshToken, bool>>>(),
             It.IsAny<CancellationToken>()),
             Times.Never());
 
@@ -363,12 +363,12 @@ public sealed class RefreshTokenServiceTests
             Times.Never());
 
         _refreshTokenRepositoryMock.Verify(r => r.AddAsync(
-            It.IsAny<ApplicationRefreshToken>(),
+            It.IsAny<RefreshToken>(),
             It.IsAny<CancellationToken>()),
             Times.Never());
 
         _refreshTokenRepositoryMock.Verify(r => r.UpdateAsync(
-            It.IsAny<ApplicationRefreshToken>(),
+            It.IsAny<RefreshToken>(),
             It.IsAny<CancellationToken>()),
             Times.Never());
 
@@ -405,9 +405,9 @@ public sealed class RefreshTokenServiceTests
             .ReturnsAsync(authenticationToken);
 
         _refreshTokenRepositoryMock.Setup(r => r.GetByPredicateAsync(
-            It.IsAny<Expression<Func<ApplicationRefreshToken, bool>>>(),
+            It.IsAny<Expression<Func<RefreshToken, bool>>>(),
             It.IsAny<CancellationToken>()))
-            .Returns(Task.FromResult<ApplicationRefreshToken?>(null));
+            .Returns(Task.FromResult<RefreshToken?>(null));
 
         // A
         var generateRefreshTokenResponseResult = await _refreshTokenService.GenerateRefreshTokenAsync(generateRefreshTokenRequest, default);
@@ -432,7 +432,7 @@ public sealed class RefreshTokenServiceTests
             Times.Once());
 
         _refreshTokenRepositoryMock.Verify(r => r.GetByPredicateAsync(
-            It.IsAny<Expression<Func<ApplicationRefreshToken, bool>>>(),
+            It.IsAny<Expression<Func<RefreshToken, bool>>>(),
             It.IsAny<CancellationToken>()),
             Times.Once());
 
@@ -441,12 +441,12 @@ public sealed class RefreshTokenServiceTests
             Times.Never());
 
         _refreshTokenRepositoryMock.Verify(r => r.AddAsync(
-            It.IsAny<ApplicationRefreshToken>(),
+            It.IsAny<RefreshToken>(),
             It.IsAny<CancellationToken>()),
             Times.Never());
 
         _refreshTokenRepositoryMock.Verify(r => r.UpdateAsync(
-            It.IsAny<ApplicationRefreshToken>(),
+            It.IsAny<RefreshToken>(),
             It.IsAny<CancellationToken>()),
             Times.Never());
 
@@ -484,7 +484,7 @@ public sealed class RefreshTokenServiceTests
 
         var refreshToken = RefreshTokenBuilder.NewObject().WithExpiryDate(DateTime.UtcNow.AddMinutes(-3)).DomainBuild();
         _refreshTokenRepositoryMock.Setup(r => r.GetByPredicateAsync(
-            It.IsAny<Expression<Func<ApplicationRefreshToken, bool>>>(),
+            It.IsAny<Expression<Func<RefreshToken, bool>>>(),
             It.IsAny<CancellationToken>()))
             .ReturnsAsync(refreshToken);
 
@@ -511,7 +511,7 @@ public sealed class RefreshTokenServiceTests
             Times.Once());
 
         _refreshTokenRepositoryMock.Verify(r => r.GetByPredicateAsync(
-            It.IsAny<Expression<Func<ApplicationRefreshToken, bool>>>(),
+            It.IsAny<Expression<Func<RefreshToken, bool>>>(),
             It.IsAny<CancellationToken>()),
             Times.Once());
 
@@ -520,12 +520,12 @@ public sealed class RefreshTokenServiceTests
             Times.Never());
 
         _refreshTokenRepositoryMock.Verify(r => r.AddAsync(
-            It.IsAny<ApplicationRefreshToken>(),
+            It.IsAny<RefreshToken>(),
             It.IsAny<CancellationToken>()),
             Times.Never());
 
         _refreshTokenRepositoryMock.Verify(r => r.UpdateAsync(
-            It.IsAny<ApplicationRefreshToken>(),
+            It.IsAny<RefreshToken>(),
             It.IsAny<CancellationToken>()),
             Times.Never());
 

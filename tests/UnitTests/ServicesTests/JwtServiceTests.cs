@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using RefreshToken.API.Options;
-using RefreshToken.API.Services;
+using RefreshTokenAuthentication.API.Options;
+using RefreshTokenAuthentication.API.Services;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;

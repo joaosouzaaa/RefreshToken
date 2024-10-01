@@ -1,4 +1,4 @@
-﻿using RefreshToken.API.Mappers;
+﻿using RefreshTokenAuthentication.API.Mappers;
 using UnitTests.TestBuilders;
 
 namespace UnitTests.MappersTests;

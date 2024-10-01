@@ -1,6 +1,6 @@
-﻿using RefreshToken.API.Arguments;
-using RefreshToken.API.DataTransferObjects.User;
-using RefreshToken.API.Entities;
+﻿using RefreshTokenAuthentication.API.Arguments;
+using RefreshTokenAuthentication.API.DataTransferObjects.User;
+using RefreshTokenAuthentication.API.Entities;
 
 namespace UnitTests.TestBuilders;
 

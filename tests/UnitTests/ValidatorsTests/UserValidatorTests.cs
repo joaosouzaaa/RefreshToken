@@ -1,4 +1,4 @@
-﻿using RefreshToken.API.Validators;
+﻿using RefreshTokenAuthentication.API.Validators;
 using UnitTests.TestBuilders;
 
 namespace UnitTests.ValidatorsTests;

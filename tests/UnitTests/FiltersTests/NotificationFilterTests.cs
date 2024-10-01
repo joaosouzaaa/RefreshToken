@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 using Moq;
-using RefreshToken.API.Filters;
-using RefreshToken.API.Interfaces.Settings;
-using RefreshToken.API.Settings.NotificationSettings;
+using RefreshTokenAuthentication.API.Filters;
+using RefreshTokenAuthentication.API.Interfaces.Settings;
+using RefreshTokenAuthentication.API.Settings.NotificationSettings;
 
 namespace UnitTests.FiltersTests;
 

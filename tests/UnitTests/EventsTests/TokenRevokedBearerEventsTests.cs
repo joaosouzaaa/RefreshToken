@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Moq;
-using RefreshToken.API.Entities;
-using RefreshToken.API.Events;
-using RefreshToken.API.Interfaces.Repositories;
+using RefreshTokenAuthentication.API.Entities;
+using RefreshTokenAuthentication.API.Events;
+using RefreshTokenAuthentication.API.Interfaces.Repositories;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq.Expressions;
 using UnitTests.TestBuilders;

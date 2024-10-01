@@ -1,4 +1,4 @@
-﻿using RefreshToken.API.Entities;
+﻿using RefreshTokenAuthentication.API.Entities;
 
 namespace UnitTests.TestBuilders;
 
@@ -9,7 +9,7 @@ public sealed class RefreshTokenBuilder
     public static RefreshTokenBuilder NewObject() =>
         new();
 
-    public ApplicationRefreshToken DomainBuild() =>
+    public RefreshToken DomainBuild() =>
         new()
         {
             ExpiryDate = _expiryDate,

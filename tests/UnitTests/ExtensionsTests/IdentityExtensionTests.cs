@@ -1,4 +1,4 @@
-﻿using RefreshToken.API.Extensions;
+﻿using RefreshTokenAuthentication.API.Extensions;
 using System.Security.Claims;
 using System.Security.Principal;
 

@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using RefreshToken.API.Settings.NotificationSettings;
+using RefreshTokenAuthentication.API.Settings.NotificationSettings;
 
 namespace UnitTests.SettingsTests;
 
