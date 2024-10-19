@@ -23,6 +23,7 @@ public sealed class UserController(IUserService userService) : ControllerBase
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetUserByIdResponse))]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public Task<GetUserByIdResponse?> GetByIdAsync(CancellationToken cancellationToken) =>
         userService.GetByIdAsync(User.Identity!.GetUserId()!, cancellationToken);
@@ -38,6 +39,7 @@ public sealed class UserController(IUserService userService) : ControllerBase
     [Authorize]
     [HttpPost("sign-out")]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(List<Notification>))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public Task SignOutAsync(CancellationToken cancellationToken) =>
